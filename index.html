@@ -95,6 +95,15 @@
   .icon svg { width: 24px; height: 24px; }
   .card h3 { margin: 0 0 6px; font-size: 1.1rem; }
   .card p { margin: 0; color: var(--muted); }
+  .card:has(.meta) { display: flex; flex-direction: column; }
+  .card:has(.meta) p:not(.meta) { margin-bottom: 16px; }
+  .card .meta {
+    margin-top: auto;
+    padding-top: 12px;
+    border-top: 1px solid var(--border);
+    font-size: .85rem;
+    color: var(--accent);
+  }
 
   .card.soon {
     background: transparent;
@@ -154,6 +163,39 @@
 </header>
 
 <main>
+  <section>
+    <div class="wrap">
+      <h2>Чем я занимаюсь</h2>
+      <p class="section-note">Задачи, которые студия уже взяла на себя.</p>
+      <div class="grid">
+        <article class="card">
+          <div class="icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 20l16-8L4 4l3 8-3 8z"/><path d="M7 12h13"/></svg>
+          </div>
+          <h3>Письма контрагентам</h3>
+          <p>Черновики писем и ответов: запросы документов, напоминания об оплате.</p>
+          <p class="meta">Личный ассистент · 3 ч в неделю</p>
+        </article>
+        <article class="card">
+          <div class="icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="8" height="16" rx="1.5"/><rect x="13" y="4" width="8" height="16" rx="1.5"/><path d="M5.5 9h3M5.5 13h3M15.5 9h3M15.5 13h3"/></svg>
+          </div>
+          <h3>Сверка актов</h3>
+          <p>Сравнивает акты сверки с учётом и показывает расхождения.</p>
+          <p class="meta">Операционный менеджер · 4 ч в неделю</p>
+        </article>
+        <article class="card">
+          <div class="icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 20V10M10 20V4M16 20v-7M22 20H2"/></svg>
+          </div>
+          <h3>Отчёты для директора</h3>
+          <p>Собирает цифры за период в короткий понятный отчёт.</p>
+          <p class="meta">Операционный менеджер · 3 ч в неделю</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
   <section>
     <div class="wrap">
       <h2>Команда</h2>
