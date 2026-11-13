@@ -1,0 +1,5 @@
+# Служебные файлы macOS
+.DS_Store
+
+# Личные настройки Claude
+.claude/settings.local.json
