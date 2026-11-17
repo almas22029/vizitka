@@ -105,23 +105,53 @@
     color: var(--accent);
   }
 
-  .card.soon {
-    background: transparent;
-    box-shadow: none;
-    border: 1.5px dashed var(--border);
-    display: flex; flex-direction: column; justify-content: space-between;
-    min-height: 120px;
-  }
-  .card.soon h3 { color: var(--muted); font-weight: 600; }
-  .badge {
-    align-self: flex-start;
-    font-size: .78rem;
+  /* Наша команда: карточки-столы */
+  .office-open {
+    display: inline-flex; align-items: center; gap: 8px;
+    margin: 0 0 14px;
+    font-size: .9rem; font-weight: 600;
     color: var(--accent);
-    border: 1px solid var(--accent);
-    border-radius: 999px;
-    padding: 2px 10px;
-    margin-top: 16px;
   }
+  .office-open .dot {
+    width: 8px; height: 8px; border-radius: 50%;
+    background: #3f9a6b;
+    box-shadow: 0 0 0 4px rgba(63,154,107,.18);
+  }
+  .desks {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(230px, 1fr));
+    gap: 20px;
+  }
+  .desk {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-bottom: 6px solid var(--accent);
+    border-radius: 16px;
+    padding: 20px 22px 22px;
+    box-shadow: var(--shadow);
+  }
+  .desk-top {
+    display: flex; align-items: flex-start; justify-content: space-between;
+    margin-bottom: 14px;
+  }
+  .desk-art { width: 56px; height: auto; color: var(--accent); display: block; }
+  .desk-no, .soon-tag {
+    font-size: .75rem; letter-spacing: .06em; text-transform: uppercase;
+    border-radius: 999px; padding: 3px 10px;
+  }
+  .desk-no { color: var(--accent); background: var(--accent-soft); }
+  .desk h3 { margin: 0 0 6px; font-size: 1.1rem; }
+  .desk p { margin: 0; color: var(--muted); }
+
+  .desk.empty {
+    background: var(--bg-accent);
+    border: 1.5px dashed var(--border);
+    border-bottom: 6px solid var(--border);
+    box-shadow: none;
+  }
+  .desk.empty h3 { color: var(--muted); font-weight: 600; margin: 0; }
+  .desk.empty .desk-art { color: var(--muted); opacity: .6; }
+  .soon-tag { color: var(--muted); border: 1px solid var(--muted); }
 
   footer {
     border-top: 1px solid var(--border);
@@ -136,6 +166,12 @@
     .hero-art { flex-basis: auto; width: 120px; }
     section { padding: 40px 0; }
     .wrap { padding: 0 16px; }
+    .desks { grid-template-columns: 1fr 1fr; gap: 12px; }
+    .desk:not(.empty) { grid-column: 1 / -1; }
+    .desk.empty { padding: 14px 14px 16px; }
+    .desk.empty .desk-top { flex-direction: column; gap: 8px; margin-bottom: 10px; }
+    .desk.empty .desk-art { width: 44px; }
+    .desk.empty h3 { font-size: 1rem; }
   }
 </style>
 </head>
@@ -196,45 +232,64 @@
     </div>
   </section>
 
-  <section>
+  <section id="team">
     <div class="wrap">
-      <h2>Команда</h2>
-      <p class="section-note">Кто уже работает в студии.</p>
-      <div class="grid">
-        <article class="card">
-          <div class="icon" aria-hidden="true">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="3" width="14" height="18" rx="2"/><path d="M9 8h6M9 12h6M9 16h3"/></svg>
+      <p class="office-open"><span class="dot" aria-hidden="true"></span>Офис открыт <time datetime="2026-11-17">17 ноября 2026</time></p>
+      <h2>Наша команда</h2>
+      <p class="section-note">Три стола заняты, четыре ждут новых сотрудников.</p>
+      <div class="desks">
+        <article class="desk">
+          <div class="desk-top">
+            <svg class="desk-art" viewBox="0 0 48 32" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="14" y="3" width="20" height="13" rx="2"/><path d="M24 16v4M18 20h12M4 24h40M8 24v6M40 24v6"/></svg>
+            <span class="desk-no">Стол 1</span>
           </div>
           <h3>Паспорт студии</h3>
-          <p>Хранит мои задачи, инструменты и правило данных.</p>
+          <p>Бухгалтер небольшой торговой фирмы, цель — экономить 5 часов в неделю.</p>
         </article>
-        <article class="card">
-          <div class="icon" aria-hidden="true">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 7l9 6 9-6"/></svg>
+        <article class="desk">
+          <div class="desk-top">
+            <svg class="desk-art" viewBox="0 0 48 32" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="14" y="3" width="20" height="13" rx="2"/><path d="M24 16v4M18 20h12M4 24h40M8 24v6M40 24v6"/></svg>
+            <span class="desk-no">Стол 2</span>
           </div>
           <h3>Личный ассистент</h3>
-          <p>Готовит письма контрагентам.</p>
+          <p>Пишет письма контрагентам в моём стиле.</p>
         </article>
-        <article class="card">
-          <div class="icon" aria-hidden="true">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="16" rx="2"/><path d="M3 10h18M9 10v10"/><circle cx="17" cy="7" r="0.5"/></svg>
+        <article class="desk">
+          <div class="desk-top">
+            <svg class="desk-art" viewBox="0 0 48 32" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="14" y="3" width="20" height="13" rx="2"/><path d="M24 16v4M18 20h12M4 24h40M8 24v6M40 24v6"/></svg>
+            <span class="desk-no">Стол 3</span>
           </div>
           <h3>Операционный менеджер</h3>
-          <p>Сводит таблицы и напоминает о сроках.</p>
+          <p>Каждый понедельник готовит сводку по срокам отчётности.</p>
         </article>
-      </div>
-    </div>
-  </section>
-
-  <section>
-    <div class="wrap">
-      <h2>Скоро в команде</h2>
-      <p class="section-note">Места, которые уже ждут новых сотрудников.</p>
-      <div class="grid">
-        <div class="card soon"><h3>Разработчик</h3><span class="badge">скоро</span></div>
-        <div class="card soon"><h3>Отдел качества</h3><span class="badge">скоро</span></div>
-        <div class="card soon"><h3>Интегратор</h3><span class="badge">скоро</span></div>
-        <div class="card soon"><h3>Флагманский продукт</h3><span class="badge">скоро</span></div>
+        <article class="desk empty">
+          <div class="desk-top">
+            <svg class="desk-art" viewBox="0 0 48 32" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 24h40M8 24v6M40 24v6"/></svg>
+            <span class="soon-tag">Скоро</span>
+          </div>
+          <h3>Разработчик</h3>
+        </article>
+        <article class="desk empty">
+          <div class="desk-top">
+            <svg class="desk-art" viewBox="0 0 48 32" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 24h40M8 24v6M40 24v6"/></svg>
+            <span class="soon-tag">Скоро</span>
+          </div>
+          <h3>Отдел качества</h3>
+        </article>
+        <article class="desk empty">
+          <div class="desk-top">
+            <svg class="desk-art" viewBox="0 0 48 32" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 24h40M8 24v6M40 24v6"/></svg>
+            <span class="soon-tag">Скоро</span>
+          </div>
+          <h3>Интегратор</h3>
+        </article>
+        <article class="desk empty">
+          <div class="desk-top">
+            <svg class="desk-art" viewBox="0 0 48 32" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 24h40M8 24v6M40 24v6"/></svg>
+            <span class="soon-tag">Скоро</span>
+          </div>
+          <h3>Флагманский продукт</h3>
+        </article>
       </div>
     </div>
   </section>
